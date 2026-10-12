@@ -21,7 +21,7 @@ export default function Teachers({ onGuestFavorite, onBook }) {
       <label><span>Price</span><span className="select-wrap"><select value={filters.price} onChange={(event) => setFilters({ ...filters, price: event.target.value })}><option value="">Any price</option><option value="25">Up to 25 $</option><option value="30">Up to 30 $</option><option value="35">Up to 35 $</option></select><ChevronDown size={18} /></span></label>
     </div>
     {error && <div className="error-state" role="alert"><p>{error}</p><button type="button" className="button button-primary" onClick={retry}>Try again</button></div>}
-    {loading && teachers.length === 0 ? <div className="loading-state" role="status">Loading teachers...</div> : !error && <TeacherList teachers={teachers} favorites={favoriteIds} onFavorite={onFavorite} onBook={onBook} emptyText="Try another language, level, or price." />}
+    {loading && teachers.length === 0 ? <div className="loading-state" role="status">Loading teachers...</div> : !error && <TeacherList teachers={teachers} favorites={favoriteIds} onFavorite={onFavorite} onBook={onBook} selectedLevel={filters.level} emptyText="Try another language, level, or price." />}
     {hasMore && !error && <div className="load-more-row"><button type="button" className="button button-primary" onClick={loadMore} disabled={loading}>{loading ? 'Loading...' : 'Load more'}</button></div>}
   </main>
 }
